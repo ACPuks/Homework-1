@@ -19,7 +19,7 @@
 int main(void)
 {
 	double step;
-	double table[MAXSTEPS][4];
+	double table[MAXSTEPS][4]={0};
 	int i, steps, start, stop;
 
 
