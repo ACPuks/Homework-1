@@ -26,7 +26,7 @@ int main(void)
 	//Võta kasutajalt algandmed
 	i=1;
 	printf("See programm arvutab funktsiooni f(x)=ln(x+5)/sqrt(7+5x+x^2)\n");
-	printf("v22rtused kuni %d punktis.\n", MAXSTEPS);
+	printf("v22rtused kuni %d punkzzzztis.\n", MAXSTEPS);
 	while(i)
 	{
 
