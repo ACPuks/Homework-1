@@ -1,14 +1,12 @@
 /**
- * File:
+ * File: Kodutoo_I_Allan_Puks_163926IASB.c
  * Author: Allan Puks
- * Created:
+ * Created: 02OCT16
  * Last edit: 10OCT16
  *
- * Description:
- *              Kõik leitavad tulemused tuleb salvestada ja kuvada selleks sobiliku massiivi või massiivide kaudu.
- * 				Ilus tabel, kus x väärtused ja func väärtused
- * 				ln(x+5)/sqrt(7+5x+x^2)
- * 				Get alg, lopp, samm
+ * Description: Arvutab funktsiooni väärtused kasutaja poolt antud
+ * 				parameetritega määratud punktides.
+ *
  */
 
 #include <stdio.h>
@@ -19,14 +17,14 @@
 int main(void)
 {
 	double step;
-	double table[MAXSTEPS][4]={0};
+	double table[MAXSTEPS][4];
 	int i, steps, start, stop;
 
 
 	//Võta kasutajalt algandmed
 	i=1;
 	printf("See programm arvutab funktsiooni f(x)=ln(x+5)/sqrt(7+5x+x^2)\n");
-	printf("v22rtused kuni %d punkzzzztis.\n", MAXSTEPS);
+	printf("v22rtused kuni %d punktis.\n", MAXSTEPS);
 	while(i)
 	{
 
@@ -58,11 +56,13 @@ int main(void)
 	step=(double)(stop-start)/(steps-1);
 	for(i=0; i<steps; i++)
 	{
-		//code ahead, be wary
+		//arvutab x-i väärtuse
 		table[i][0]=start + step*i;
+		//arvutab ülemise võrrandi
 		table[i][2]=table[i][0]+5;
+		//arvutab alumise võrrandi
 		table[i][3]=7+5*table[i][0]+pow(table[i][0], 2.0);
-
+		//arvutab y-i
 		table[i][1]=log(table[i][2])/sqrt(table[i][3]);
 
 	}
@@ -72,18 +72,22 @@ int main(void)
 	printf("-------------------\n");
 	printf("|   x    |    y   |\n");
 	printf("-------------------\n");
-	for(i=0;i<MAXSTEPS; i++)
+	for(i=0;i<steps; i++)
 	{
 		printf("| ");
+		//juhul kui arv on negatiivne lisatühik
 		if(table[i][0] >= 0)
 		{
 			printf(" ");
 		}
+
+		//esimene väärtus
 		printf("%2.2f", table[i][0]);
+		//vahesein
 		printf(" | ");
+		//Erijuhtude kontroll
 		if(table[i][2] < 0 || table[i][3] < 0)
 		{
-
 			printf(" Kompl ");
 		}
 		else if(table[i][2] == 0 || table[i][3] == 0)
@@ -92,6 +96,7 @@ int main(void)
 		}
 		else
 		{
+			//juhul kui arv on negatiivne, lisatühik
 			if(table[i][1] >= 0)
 			{
 				printf(" ");
@@ -100,7 +105,7 @@ int main(void)
 		}
 		printf(" |\n");
 	}
-
+	//lõpetab tabeli
 	printf("-------------------\n");
 
 
